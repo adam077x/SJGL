@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import sjgl.input.KeyboardHandler;
 import sjgl.window.Window;
 
 public class SJGL extends Canvas implements Runnable{
@@ -33,6 +34,7 @@ public class SJGL extends Canvas implements Runnable{
 		onStart();
 		thread = new Thread(this);
 		thread.start();
+		this.addKeyListener(new KeyboardHandler());
 		running = true;
 	}
 	
