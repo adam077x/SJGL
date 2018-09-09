@@ -7,6 +7,8 @@ import java.awt.image.BufferStrategy;
 import sjgl.window.Window;
 
 public class SJGL extends Canvas implements Runnable{
+	private static final long serialVersionUID = -1606451883329577588L;
+	
 	public int ticks;
 	private Thread thread;
 	private boolean running = false;
