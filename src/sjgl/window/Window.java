@@ -7,6 +7,8 @@ import sjgl.SJGL;
 public class Window {
 	private JFrame f;
 	
+	//TODO: Add more preferences for the window.
+	
 	public Window(int width, int height, String title, SJGL sjgl) {
 		f = new JFrame(title);
 		f.setSize(width, height);

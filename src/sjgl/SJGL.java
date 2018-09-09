@@ -13,11 +13,21 @@ public class SJGL extends Canvas implements Runnable{
 	
 	public SJGL(int width, int height, String title) {
 		new Window(width, height, title, this);
+		
+		/*
+		 * A value that restrains ticks per seconds
+		 * */
+		
 		ticks = 60;
 		start();
 	}
 
 	private synchronized void start() {
+		
+		/*
+		 * This code will be executed when program starts.
+		 * */
+		
 		onStart();
 		thread = new Thread(this);
 		thread.start();
@@ -34,6 +44,10 @@ public class SJGL extends Canvas implements Runnable{
 		running = false;
 	}
 	
+	/*
+	 * Functions that users of this library will use.
+	 * */
+	
 	public void onStart() {}
 	
 	public void onClose() {}
@@ -41,7 +55,7 @@ public class SJGL extends Canvas implements Runnable{
 	public void onUpdate() {}
 
 	public void onRender(Graphics g) {}
-
+	
 	void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
@@ -66,6 +80,11 @@ public class SJGL extends Canvas implements Runnable{
 		long timer = System.currentTimeMillis();
 		int updates = 0;
 		int frames = 0;
+		
+		/*
+		 * Game loop (will cap ticks per second, while you can have unlimited frames per second)
+		 * */
+		
 		while(running){
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;

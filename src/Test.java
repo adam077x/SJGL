@@ -5,6 +5,10 @@ import java.awt.Graphics2D;
 import sjgl.SJGL;
 import sjgl.window.Window;
 
+/*
+ * This class is for testing SJGL.
+ * */
+
 public class Test extends SJGL{
 	
 	public Test() {
@@ -21,6 +25,7 @@ public class Test extends SJGL{
 	}
 	
 	public void onUpdate() {
+		System.out.println("update");
 	}
 	
 	public void onRender(Graphics g) {
