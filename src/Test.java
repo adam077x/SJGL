@@ -12,11 +12,18 @@ public class Test extends SJGL{
 		this.ticks = 60;
 	}
 	
-	public void FixedUpdate() {
-		//System.out.println("hi");
+	public void onStart() {
+		System.out.println("Start");
 	}
 	
-	public void Render(Graphics g) {
+	public void onClose() {
+		System.out.println("Close");
+	}
+	
+	public void onUpdate() {
+	}
+	
+	public void onRender(Graphics g) {
 		g.setColor(Color.cyan);
 		g.fillRect(0, 0, 800, 800);
 		

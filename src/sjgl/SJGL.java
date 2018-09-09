@@ -18,14 +18,14 @@ public class SJGL extends Canvas implements Runnable{
 	}
 
 	private synchronized void start() {
-		if(running) return;
+		onStart();
 		thread = new Thread(this);
 		thread.start();
 		running = true;
 	}
 	
 	private synchronized void stop() {
-		if(!running) return;
+		onClose();
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
@@ -34,11 +34,13 @@ public class SJGL extends Canvas implements Runnable{
 		running = false;
 	}
 	
-	public void FixedUpdate() {}
+	public void onStart() {}
+	
+	public void onClose() {}
+	
+	public void onUpdate() {}
 
-	public void Update() {}
-
-	public void Render(Graphics g) {}
+	public void onRender(Graphics g) {}
 
 	void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -49,7 +51,7 @@ public class SJGL extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		Render(g);
+		onRender(g);
 		
 		bs.show();
 		g.dispose();
@@ -69,17 +71,15 @@ public class SJGL extends Canvas implements Runnable{
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while(delta >= 1){
-				FixedUpdate();
+				onUpdate();
 				updates++;
 				delta--;
 			}
 			render();
-			Update();
 			frames++;
 					
 			if(System.currentTimeMillis() - timer > 1000){
 				timer += 1000;
-				System.out.println("FPS: " + frames + " TICKS: " + updates);
 				frames = 0;
 				updates = 0;
 			}
