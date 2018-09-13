@@ -3,7 +3,7 @@ package sjgl.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyboardHandler implements KeyListener{
+public class Keyboard implements KeyListener{
 	public static int key;
 	
 	public void keyPressed(KeyEvent e) {

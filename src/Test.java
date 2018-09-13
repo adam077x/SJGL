@@ -4,15 +4,13 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import sjgl.SJGL;
-import sjgl.input.KeyboardHandler;
-import sjgl.window.Window;
+import sjgl.input.Keyboard;
 
 /*
  * This class is for testing SJGL.
  * */
 
 public class Test extends SJGL{
-	//private KeyboardHandler keyHandler = new KeyboardHandler();
 	
 	public Test() {
 		super(800, 800, "test");
@@ -35,7 +33,7 @@ public class Test extends SJGL{
 		g.setColor(Color.cyan);
 		g.fillRect(0, 0, 800, 800);
 		
-		if(KeyboardHandler.key == KeyEvent.VK_F) {
+		if(Keyboard.key == KeyEvent.VK_F) {
 			System.out.println("test");
 		}
 	}

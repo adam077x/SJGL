@@ -4,10 +4,10 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import sjgl.input.KeyboardHandler;
+import sjgl.input.Keyboard;
 import sjgl.window.Window;
 
-public class SJGL extends Canvas implements Runnable{
+public abstract class SJGL extends Canvas implements Runnable{
 	private static final long serialVersionUID = -1606451883329577588L;
 	
 	public int ticks;
@@ -34,7 +34,7 @@ public class SJGL extends Canvas implements Runnable{
 		onStart();
 		thread = new Thread(this);
 		thread.start();
-		this.addKeyListener(new KeyboardHandler());
+		this.addKeyListener(new Keyboard());
 		running = true;
 	}
 	
@@ -52,15 +52,15 @@ public class SJGL extends Canvas implements Runnable{
 	 * Functions that users of this library will use.
 	 * */
 	
-	public void onStart() {}
+	public abstract void onStart();
 	
-	public void onClose() {}
+	public abstract void onClose();
 	
-	public void onUpdate() {}
+	public abstract void onUpdate();
 
-	public void onRender(Graphics g) {}
+	public abstract void onRender(Graphics g);
 	
-	void render() {
+	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
 			this.createBufferStrategy(3);
