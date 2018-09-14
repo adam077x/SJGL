@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
+import sjgl.gameloop.GameLoop;
 import sjgl.input.Keyboard;
 import sjgl.input.Mouse;
 import sjgl.window.Window;
@@ -18,7 +19,7 @@ public abstract class SJGL extends Canvas implements Runnable{
 	public boolean sync = true;
 	private Thread thread;
 	private boolean running = false;
-	private Window window;
+	private SJGL sjgl = this;
 	
 	public SJGL(int width, int height, String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
@@ -45,17 +46,18 @@ public abstract class SJGL extends Canvas implements Runnable{
 		thread.start();
 		this.addKeyListener(new Keyboard());
 		this.addMouseListener(new Mouse());
-		running = true;
+		setRunning(true);
 	}
 	
-	private synchronized void stop() {
+	public synchronized void stop() {
+		if(running) return;
 		onClose();
 		try {
 			thread.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		running = false;
+		setRunning(false);
 	}
 	
 	/*
@@ -86,40 +88,18 @@ public abstract class SJGL extends Canvas implements Runnable{
 	}
 	
 	public void run() {
-		this.requestFocus();
-		long lastTime = System.nanoTime();
-		double amountOfTicks = ticks;
-		double ns = 1000000000 / amountOfTicks;
-		double delta = 0;
-		long timer = System.currentTimeMillis();
-		int updates = 0;
-		int frames = 0;
-		
-		/*
-		 * Game loop (will cap ticks per second, while you can have unlimited frames per second)
-		 * */
-		
-		while(running){
-			long now = System.nanoTime();
-			delta += (now - lastTime) / ns;
-			lastTime = now;
-			while(delta >= 1){
-				onUpdate();
-				updates++;
-				delta--;
-			}
-			render();
-			frames++;
-					
-			if(System.currentTimeMillis() - timer > 1000){
-				timer += 1000;
-				frames = 0;
-				updates = 0;
-			}
-			if(sync) {
-				Toolkit.getDefaultToolkit().sync();
-			}
-		}
-		stop();
+		new GameLoop(this);
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+
+	public SJGL getSjgl() {
+		return sjgl;
 	}
 }
