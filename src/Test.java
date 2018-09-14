@@ -8,6 +8,7 @@ import sjgl.SJGL;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
 import sjgl.input.Keyboard;
+import sjgl.input.Mouse;
 
 /*
  * This class is for testing SJGL.
@@ -50,6 +51,10 @@ public class Test extends SJGL{
 		
 		if(Keyboard.key == KeyEvent.VK_F) {
 			System.out.println("test");
+		}
+		
+		if(Mouse.isPressed()) {
+			System.out.println(Mouse.getX());
 		}
 	}
 	

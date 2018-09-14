@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import sjgl.input.Keyboard;
+import sjgl.input.Mouse;
 import sjgl.window.Window;
 
 public abstract class SJGL extends Canvas implements Runnable{
@@ -37,6 +38,7 @@ public abstract class SJGL extends Canvas implements Runnable{
 		thread = new Thread(this);
 		thread.start();
 		this.addKeyListener(new Keyboard());
+		this.addMouseListener(new Mouse());
 		running = true;
 	}
 	
