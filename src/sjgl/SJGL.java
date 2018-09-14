@@ -2,6 +2,7 @@ package sjgl;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import sjgl.input.Keyboard;
@@ -11,6 +12,7 @@ public abstract class SJGL extends Canvas implements Runnable{
 	private static final long serialVersionUID = -1606451883329577588L;
 	
 	public int ticks;
+	public boolean sync = true;
 	private Thread thread;
 	private boolean running = false;
 	
@@ -105,6 +107,9 @@ public abstract class SJGL extends Canvas implements Runnable{
 				timer += 1000;
 				frames = 0;
 				updates = 0;
+			}
+			if(sync) {
+				Toolkit.getDefaultToolkit().sync();
 			}
 		}
 		stop();
