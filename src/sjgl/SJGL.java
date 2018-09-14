@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JFrame;
+
 import sjgl.input.Keyboard;
 import sjgl.input.Mouse;
 import sjgl.window.Window;
@@ -12,17 +14,21 @@ import sjgl.window.Window;
 public abstract class SJGL extends Canvas implements Runnable{
 	private static final long serialVersionUID = -1606451883329577588L;
 	
-	public int ticks;
+	public int ticks; // A value that restrains ticks per seconds
 	public boolean sync = true;
 	private Thread thread;
 	private boolean running = false;
+	private Window window;
 	
 	public SJGL(int width, int height, String title) {
-		new Window(width, height, title, this);
+		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
 		
-		/*
-		 * A value that restrains ticks per seconds
-		 * */
+		ticks = 60;
+		start();
+	}
+	
+	public SJGL(int width, int height, String title, boolean resizable, int closeOp, boolean visible) {
+		new Window(width, height, title, resizable, closeOp, visible, this);
 		
 		ticks = 60;
 		start();
