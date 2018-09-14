@@ -62,7 +62,7 @@ public abstract class SJGL extends Canvas implements Runnable{
 
 	public abstract void onRender(Graphics g);
 	
-	private void render() {
+	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
 			this.createBufferStrategy(3);
@@ -114,5 +114,4 @@ public abstract class SJGL extends Canvas implements Runnable{
 		}
 		stop();
 	}
-
 }
