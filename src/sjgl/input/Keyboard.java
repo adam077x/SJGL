@@ -3,7 +3,6 @@ package sjgl.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Keyboard implements KeyListener {
 	public static ArrayList<Integer> keys = new ArrayList<Integer>();

@@ -2,7 +2,6 @@ package sjgl;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;

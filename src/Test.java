@@ -18,6 +18,7 @@ import sjgl.window.Window;
  * */
 
 public class Test extends SJGL{
+	private static final long serialVersionUID = 3597315792225837761L;
 	
 	private BufferedImage image;
 	private BufferedImage sprite1;
