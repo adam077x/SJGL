@@ -45,6 +45,9 @@ public class Test extends SJGL{
 	public void onUpdate() {
 		x += velX;
 		y += velY;
+		
+		velX = 0;
+		velY = 0;
 	}
 	
 	public void onRender(Graphics g) {
@@ -62,9 +65,6 @@ public class Test extends SJGL{
 		if(Mouse.isPressed()) {
 			System.out.println(Mouse.getX());
 		}
-		
-		velY = 0;
-		velX = 0;
 		
 		if(Keyboard.isKeyDown(KeyEvent.VK_A)) {
 			velX = -5;
