@@ -2,26 +2,41 @@ package sjgl.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Keyboard implements KeyListener{
-	public static int key;
-	
+public class Keyboard implements KeyListener {
+	public static ArrayList<Integer> keys = new ArrayList<Integer>();
+
 	public void keyPressed(KeyEvent e) {
-		key = e.getKeyCode();
+		keys.add(e.getKeyCode());
 	}
 
 	public void keyReleased(KeyEvent e) {
-		key = 0;
+		for(int i = 0; i < keys.size(); i++) {
+			keys.remove(keys.get(i));
+		}
 	}
 
 	public void keyTyped(KeyEvent e) {
-		key = e.getKeyCode();
+
 	}
-	
+
 	public static boolean isKeyDown(int k) {
-		if(k == key) {
-			return true;
+		for (int i = 0; i < keys.size(); i++) {
+			if (k == keys.get(i).intValue()) {
+				return true;
+			}
 		}
 		return false;
+	}
+	
+	public static boolean isKeyUp(int k) {
+		for (int i = 0; i < keys.size(); i++) {
+			if (k == keys.get(i).intValue()) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

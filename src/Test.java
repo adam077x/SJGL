@@ -22,6 +22,7 @@ public class Test extends SJGL{
 	private BufferedImage image;
 	private BufferedImage sprite1;
 	private SpriteSheet ss;
+	private int x, y, velX, velY;
 	
 	public Test() {
 		super(800, 800, "test");
@@ -42,7 +43,8 @@ public class Test extends SJGL{
 	}
 	
 	public void onUpdate() {
-
+		x += velX;
+		y += velY;
 	}
 	
 	public void onRender(Graphics g) {
@@ -53,12 +55,28 @@ public class Test extends SJGL{
 		g2d.drawImage(sprite1, 0, 0, null);
 		//g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
 		
-		if(Keyboard.isKeyDown(KeyEvent.VK_F)) {
-			System.out.println("test");
-		}
+		g.setColor(Color.RED);
+		g.fillRect(x, y, 50, 50);
+		
 		
 		if(Mouse.isPressed()) {
 			System.out.println(Mouse.getX());
+		}
+		
+		velY = 0;
+		velX = 0;
+		
+		if(Keyboard.isKeyDown(KeyEvent.VK_A)) {
+			velX = -5;
+		}
+		if(Keyboard.isKeyDown(KeyEvent.VK_D)) {
+			velX = 5;
+		}
+		if(Keyboard.isKeyDown(KeyEvent.VK_W)) {
+			velY = -5;
+		}
+		if(Keyboard.isKeyDown(KeyEvent.VK_S)) {
+			velY = 5;
 		}
 	}
 	
