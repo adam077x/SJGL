@@ -11,7 +11,7 @@ public class ImageLoader {
 		URL url = this.getClass().getResource(path);
 		BufferedImage image = null;
 		try {
-			image = ImageIO.read(url);
+			image = ImageIO.read(url); 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

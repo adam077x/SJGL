@@ -8,7 +8,7 @@ public class GameLoop {
 	public GameLoop(SJGL sjgl) {
 		//this.requestFocus();
 		long lastTime = System.nanoTime();
-		double amountOfTicks = sjgl.getSjgl().ticks;
+		double amountOfTicks = sjgl.getSjgl().getTicks();
 		double ns = 1000000000 / amountOfTicks;
 		double delta = 0;
 		long timer = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class GameLoop {
 				frames = 0;
 				updates = 0;
 			}
-			if(sjgl.getSjgl().sync) {
+			if(sjgl.getSjgl().isSync()) {
 				Toolkit.getDefaultToolkit().sync();
 			}
 		}

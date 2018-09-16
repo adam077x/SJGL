@@ -25,15 +25,16 @@ public class Test extends SJGL{
 	
 	public Test() {
 		super(800, 800, "test");
-		this.ticks = 60;
-		ImageLoader loader = new ImageLoader();
-		image = loader.loadImage("/test.png"); 
-		ss = new SpriteSheet("/spriteSheet.png", 16);
-		sprite1 = ss.grabSprite(0, 0);
+		setTicks(60);
 	}
 	
 	public void onStart() {
 		System.out.println("Start");
+		
+		ImageLoader loader = new ImageLoader();
+		image = loader.loadImage("/test.png"); 
+		ss = new SpriteSheet("/spriteSheet.png", 16);
+		sprite1 = ss.grabSprite(0, 0);
 	}
 	
 	public void onClose() {
@@ -41,7 +42,7 @@ public class Test extends SJGL{
 	}
 	
 	public void onUpdate() {
-		//System.out.println("update");
+
 	}
 	
 	public void onRender(Graphics g) {
@@ -52,7 +53,7 @@ public class Test extends SJGL{
 		g2d.drawImage(sprite1, 0, 0, null);
 		//g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
 		
-		if(Keyboard.key == KeyEvent.VK_F) {
+		if(Keyboard.isKeyDown(KeyEvent.VK_F)) {
 			System.out.println("test");
 		}
 		

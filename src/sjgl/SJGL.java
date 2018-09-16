@@ -15,8 +15,8 @@ import sjgl.window.Window;
 public abstract class SJGL extends Canvas implements Runnable{
 	private static final long serialVersionUID = -1606451883329577588L;
 	
-	public int ticks; // A value that restrains ticks per seconds
-	public boolean sync = true;
+	private int ticks; // A value that restrains ticks per seconds
+	private boolean sync = true;
 	private Thread thread;
 	private boolean running = false;
 	private SJGL sjgl = this;
@@ -64,13 +64,13 @@ public abstract class SJGL extends Canvas implements Runnable{
 	 * Functions that users of this library will use.
 	 * */
 	
-	public abstract void onStart();
+	public abstract void onStart(); // This function will be executed every time the program is opened
 	
-	public abstract void onClose();
+	public abstract void onClose(); // This function will be executed when the program/application is closed
 	
-	public abstract void onUpdate();
+	public abstract void onUpdate(); // This function is executed 60 times a second
 
-	public abstract void onRender(Graphics g);
+	public abstract void onRender(Graphics g); // This function is executed as many times as possible. (Depends on the power of your computer)
 	
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -87,6 +87,10 @@ public abstract class SJGL extends Canvas implements Runnable{
 		g.dispose();
 	}
 	
+	/*
+	 * Some getters and setters
+	 * */
+	
 	public void run() {
 		new GameLoop(this);
 	}
@@ -101,5 +105,21 @@ public abstract class SJGL extends Canvas implements Runnable{
 
 	public SJGL getSjgl() {
 		return sjgl;
+	}
+
+	public int getTicks() {
+		return ticks;
+	}
+
+	public void setTicks(int ticks) {
+		this.ticks = ticks;
+	}
+
+	public boolean isSync() {
+		return sync;
+	}
+
+	public void setSync(boolean sync) {
+		this.sync = sync;
 	}
 }

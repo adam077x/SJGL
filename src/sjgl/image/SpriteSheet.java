@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 	private static BufferedImage spriteSheet;
-	private String path;
+	private String path; // Destination path to an image
 	private ImageLoader loader;
 	
 	private int size;

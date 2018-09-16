@@ -17,4 +17,11 @@ public class Keyboard implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		key = e.getKeyCode();
 	}
+	
+	public static boolean isKeyDown(int k) {
+		if(k == key) {
+			return true;
+		}
+		return false;
+	}
 }
