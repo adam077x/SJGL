@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
@@ -58,10 +59,6 @@ public class Test extends SJGL {
 
 		g.setColor(Color.RED);
 		g.fillRect(x, y, 50, 50);
-
-		if (Mouse.isPressed()) {
-			System.out.println(Mouse.getX());
-		}
 	}
 
 	@Override
@@ -98,5 +95,30 @@ public class Test extends SJGL {
 
 	public static void main(String[] args) {
 		new Test();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		
 	}
 }
