@@ -17,70 +17,85 @@ import sjgl.window.Window;
  * This class is for testing SJGL.
  * */
 
-public class Test extends SJGL{
+public class Test extends SJGL {
 	private static final long serialVersionUID = 3597315792225837761L;
-	
+
 	private BufferedImage image;
 	private BufferedImage sprite1;
 	private SpriteSheet ss;
 	private int x, y, velX, velY;
-	
+
 	public Test() {
 		super(800, 800, "test");
 		setTicks(60);
 	}
-	
+
 	public void onStart() {
 		System.out.println("Start");
-		
+
 		ImageLoader loader = new ImageLoader();
-		image = loader.loadImage("/test.png"); 
+		image = loader.loadImage("/test.png");
 		ss = new SpriteSheet("/spriteSheet.png", 16);
 		sprite1 = ss.grabSprite(0, 0);
 	}
-	
+
 	public void onClose() {
 		System.out.println("Close");
 	}
-	
+
 	public void onUpdate() {
 		x += velX;
 		y += velY;
-		
-		velX = 0;
-		velY = 0;
 	}
-	
+
 	public void onRender(Graphics g) {
 		g.setColor(Color.cyan);
 		g.fillRect(0, 0, 800, 800);
-		
+
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(sprite1, 0, 0, null);
-		//g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
-		
+		// g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
+
 		g.setColor(Color.RED);
 		g.fillRect(x, y, 50, 50);
-		
-		
-		if(Mouse.isPressed()) {
+
+		if (Mouse.isPressed()) {
 			System.out.println(Mouse.getX());
 		}
-		
-		if(Keyboard.isKeyDown(KeyEvent.VK_A)) {
+	}
+
+	@Override
+	public void onKeyPress(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
 			velX = -5;
 		}
-		if(Keyboard.isKeyDown(KeyEvent.VK_D)) {
+		if (e.getKeyCode() == KeyEvent.VK_D) {
 			velX = 5;
 		}
-		if(Keyboard.isKeyDown(KeyEvent.VK_W)) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			velY = -5;
 		}
-		if(Keyboard.isKeyDown(KeyEvent.VK_S)) {
+		if (e.getKeyCode() == KeyEvent.VK_S) {
 			velY = 5;
 		}
 	}
-	
+
+	@Override
+	public void onKeyRelease(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
+			velX = 0;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_D) {
+			velX = 0;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_W) {
+			velY = 0;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_S) {
+			velY = 0;
+		}
+	}
+
 	public static void main(String[] args) {
 		new Test();
 	}

@@ -2,6 +2,7 @@ package sjgl;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
@@ -43,7 +44,7 @@ public abstract class SJGL extends Canvas implements Runnable {
 		onStart();
 		thread = new Thread(this);
 		thread.start();
-		this.addKeyListener(new Keyboard());
+		this.addKeyListener(new Keyboard(this));
 		this.addMouseListener(new Mouse());
 		setRunning(true);
 	}
@@ -72,6 +73,10 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	public abstract void onRender(Graphics g); // This function is executed as many times as possible. (Depends on the
 												// power of your computer)
+	
+	public abstract void onKeyPress(KeyEvent e);
+	
+	public abstract void onKeyRelease(KeyEvent e);
 
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
