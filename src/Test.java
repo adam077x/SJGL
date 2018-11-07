@@ -1,18 +1,12 @@
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JFrame;
-
 import sjgl.SJGL;
+import sjgl.graphics.Graphics;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
-import sjgl.input.Keyboard;
-import sjgl.input.Mouse;
-import sjgl.window.Window;
 
 /*
  * This class is for testing SJGL.
@@ -49,16 +43,16 @@ public class Test extends SJGL {
 		y += velY;
 	}
 
-	public void onRender(Graphics g) {
-		g.setColor(Color.cyan);
-		g.fillRect(0, 0, 800, 800);
+	public void onRender() {
+		Graphics g = new Graphics();
+		
+		g.fillRect(0, 0, 800, 800, Color.CYAN);
 
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(sprite1, 0, 0, null);
+		//Graphics2D g2d = (Graphics2D) g;
+		//g2d.drawImage(sprite1, 0, 0, null);
 		// g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
 
-		g.setColor(Color.RED);
-		g.fillRect(x, y, 50, 50);
+		g.fillRect(x, y, 50, 50, Color.RED);
 	}
 
 	@Override

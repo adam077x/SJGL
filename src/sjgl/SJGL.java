@@ -21,7 +21,8 @@ public abstract class SJGL extends Canvas implements Runnable {
 	private Thread thread;
 	private boolean running = false;
 	private SJGL sjgl = this;
-
+	public static Graphics g;
+	
 	public SJGL(int width, int height, String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
 
@@ -72,7 +73,7 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	public abstract void onUpdate(); // This function is executed 60 times a second
 
-	public abstract void onRender(Graphics g); // This function is executed as many times as possible. (Depends on the power of your computer)
+	public abstract void onRender(); // This function is executed as many times as possible. (Depends on the power of your computer)
 	
 	public abstract void onKeyPress(KeyEvent e);
 	
@@ -95,9 +96,9 @@ public abstract class SJGL extends Canvas implements Runnable {
 			return;
 		}
 
-		Graphics g = bs.getDrawGraphics();
+		g = bs.getDrawGraphics();
 
-		onRender(g);
+		onRender();
 
 		bs.show();
 		g.dispose();
