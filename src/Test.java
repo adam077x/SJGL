@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import sjgl.SJGL;
 import sjgl.graphics.Graphics;
+import sjgl.hardwareinfo.HardwareInfo;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
 
@@ -32,6 +33,7 @@ public class Test extends SJGL {
 		image = loader.loadImage("/test.png");
 		ss = new SpriteSheet("/spriteSheet.png", 16);
 		sprite1 = ss.grabSprite(0, 0);
+		System.out.println(HardwareInfo.cpuIdentifier);
 	}
 
 	public void onClose() {
@@ -51,7 +53,6 @@ public class Test extends SJGL {
 		//Graphics2D g2d = (Graphics2D) g;
 		//g2d.drawImage(sprite1, 0, 0, null);
 		// g2d.drawImage(ss.grabSprite(1, 1), 0, 0, null);
-
 		g.fillRect(x, y, 50, 50, Color.RED);
 	}
 
