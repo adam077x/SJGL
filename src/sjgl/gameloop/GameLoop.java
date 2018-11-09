@@ -1,7 +1,5 @@
 package sjgl.gameloop;
 
-import java.awt.Toolkit;
-
 import sjgl.SJGL;
 
 public class GameLoop {
