@@ -136,4 +136,8 @@ public abstract class SJGL extends Canvas implements Runnable {
 	public void setTicks(int ticks) {
 		this.ticks = ticks;
 	}
+	
+	public float getVersion() {
+		return 1.2f;
+	}
 }
