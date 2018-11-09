@@ -17,7 +17,7 @@ public abstract class SJGL extends Canvas implements Runnable {
 	private static final long serialVersionUID = -1606451883329577588L;
 
 	private int ticks; // A value that restrains ticks per seconds
-	private boolean sync = true;
+	private int render;
 	private Thread thread;
 	private boolean running = false;
 	private SJGL sjgl = this;
@@ -25,7 +25,8 @@ public abstract class SJGL extends Canvas implements Runnable {
 	
 	public SJGL(int width, int height, String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
-
+		
+		render = 1000;
 		ticks = 60;
 		start();
 	}
@@ -123,6 +124,10 @@ public abstract class SJGL extends Canvas implements Runnable {
 	public SJGL getSjgl() {
 		return sjgl;
 	}
+	
+	public int getRender() {
+		return render;
+	}
 
 	public int getTicks() {
 		return ticks;
@@ -130,13 +135,5 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	public void setTicks(int ticks) {
 		this.ticks = ticks;
-	}
-
-	public boolean isSync() {
-		return sync;
-	}
-
-	public void setSync(boolean sync) {
-		this.sync = sync;
 	}
 }
