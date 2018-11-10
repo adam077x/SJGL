@@ -23,14 +23,14 @@ public abstract class SJGL extends Canvas implements Runnable {
 	private SJGL sjgl = this;
 	public static Graphics g;
 	
-	public SJGL(int width, int height, String title) {
+	public void createDisplay(int width, int height, String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
 
 		ticks = 60;
 		start();
 	}
-
-	public SJGL(int width, int height, String title, boolean resizable, int closeOp, boolean visible) {
+	
+	public void createDisplay(int width, int height, String title, boolean resizable, int closeOp, boolean visible) {
 		new Window(width, height, title, resizable, closeOp, visible, this);
 
 		ticks = 60;

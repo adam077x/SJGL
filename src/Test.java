@@ -21,8 +21,7 @@ public class Test extends SJGL {
 	private int x, y, velX, velY;
 
 	public Test() {
-		super(800, 800, "test");
-		setTicks(60);
+		createDisplay(700, 700, "test");
 	}
 
 	public void onStart() {
