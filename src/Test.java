@@ -7,6 +7,7 @@ import java.io.File;
 import sjgl.SJGL;
 import sjgl.audio.PlayWavSound;
 import sjgl.computerinfo.ComputerInfo;
+import sjgl.gameloop.GameLoop;
 import sjgl.graphics.Graphics;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
@@ -29,6 +30,7 @@ public class Test extends SJGL {
 	}
 
 	public void onStart() {
+		GameLoop.syncronized = false;
 		System.out.println("Start");
 
 		ImageLoader loader = new ImageLoader();

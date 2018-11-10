@@ -154,6 +154,6 @@ public abstract class SJGL extends Canvas implements Runnable {
 	}
 	
 	public float getVersion() {
-		return 1.2f;
+		return 1.3f;
 	}
 }

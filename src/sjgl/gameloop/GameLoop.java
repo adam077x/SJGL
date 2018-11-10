@@ -1,10 +1,13 @@
 package sjgl.gameloop;
 
+import java.awt.Toolkit;
+
 import sjgl.SJGL;
 
 public class GameLoop {
 	private static int updates;
 	private static int frames;
+	public static boolean syncronized = false;
 	
 	public GameLoop(SJGL sjgl) {
 		//this.requestFocus();
@@ -46,6 +49,10 @@ public class GameLoop {
 				timer += 1000;
 				frames = 0;
 				updates = 0;
+			}
+			
+			if(syncronized) {
+				Toolkit.getDefaultToolkit().sync(); // Synchronize graphical state
 			}
 		}
 		sjgl.getSjgl().stop();
