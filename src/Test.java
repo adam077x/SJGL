@@ -35,7 +35,7 @@ public class Test extends SJGL {
 		image = loader.loadImage("/test.png");
 		ss = new SpriteSheet("/spriteSheet.png", 16);
 		sprite1 = ss.grabSprite(0, 0);
-		System.out.println(HardwareInfo.cpuIdentifier);
+		System.out.println(HardwareInfo.java_version);
 	}
 
 	public void onClose() {
