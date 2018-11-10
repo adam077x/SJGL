@@ -2,8 +2,10 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import sjgl.SJGL;
+import sjgl.audio.PlayWavSound;
 import sjgl.graphics.Graphics;
 import sjgl.hardwareinfo.HardwareInfo;
 import sjgl.image.ImageLoader;
@@ -68,6 +70,9 @@ public class Test extends SJGL {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			velY = 5;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_F) {
+			PlayWavSound.PlaySound(new File("Pickup_Coin.wav"));
 		}
 	}
 
