@@ -5,12 +5,14 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
 import sjgl.gameloop.GameLoop;
 import sjgl.input.Keyboard;
 import sjgl.input.Mouse;
+import sjgl.object.GameObject;
 import sjgl.window.Window;
 
 public abstract class SJGL extends Canvas implements Runnable {
@@ -22,6 +24,7 @@ public abstract class SJGL extends Canvas implements Runnable {
 	private boolean running = false;
 	private SJGL sjgl = this;
 	public static Graphics g;
+	public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	
 	public void createDisplay(int width, int height, String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, this);
@@ -77,19 +80,19 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	public abstract void onRender(); // This function is executed as many times as possible. (Depends on the power of your computer)
 	
-	public abstract void onKeyPress(KeyEvent e);
+	public void onKeyPress(KeyEvent e) {}
 	
-	public abstract void onKeyRelease(KeyEvent e);
+	public void onKeyRelease(KeyEvent e) {}
 	
-	public abstract void mouseClicked(MouseEvent e);
+	public void mouseClicked(MouseEvent e) {}
 
-	public abstract void mouseEntered(MouseEvent e);
+	public void mouseEntered(MouseEvent e) {}
 
-	public abstract void mouseExited(MouseEvent e);
+	public void mouseExited(MouseEvent e) {}
 
-	public abstract void mousePressed(MouseEvent e);
+	public void mousePressed(MouseEvent e) {}
 
-	public abstract void mouseReleased(MouseEvent e);
+	public void mouseReleased(MouseEvent e) {}
 
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -99,11 +102,23 @@ public abstract class SJGL extends Canvas implements Runnable {
 		}
 
 		g = bs.getDrawGraphics();
-
+		sjgl.graphics.Graphics g2 = new sjgl.graphics.Graphics();
 		onRender();
 
+		for(int i = 0; i < objects.size(); i++) {
+			 objects.get(i).onRender(g2);
+		}
+		
 		bs.show();
 		g.dispose();
+	}
+	
+	public void tick() {
+		onUpdate();
+		
+		for(int i = 0; i < objects.size(); i++) {
+			 objects.get(i).onUpdate();
+		}
 	}
 
 	/*

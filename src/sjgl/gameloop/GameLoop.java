@@ -30,7 +30,7 @@ public class GameLoop {
 			deltaRender += (now - lastTime) / render;
 			lastTime = now;
 			while(delta >= 1){
-				sjgl.getSjgl().onUpdate();
+				sjgl.getSjgl().tick();
 				updates++;
 				delta--;
 			}

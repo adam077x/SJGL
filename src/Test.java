@@ -6,11 +6,11 @@ import java.io.File;
 
 import sjgl.SJGL;
 import sjgl.audio.PlayWavSound;
-import sjgl.gameloop.GameLoop;
+import sjgl.computerinfo.ComputerInfo;
 import sjgl.graphics.Graphics;
-import sjgl.hardwareinfo.HardwareInfo;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
+import sjgl.object.GameObject;
 
 /*
  * This class is for testing SJGL.
@@ -35,7 +35,8 @@ public class Test extends SJGL {
 		image = loader.loadImage("/test.png");
 		ss = new SpriteSheet("/spriteSheet.png", 16);
 		sprite1 = ss.grabSprite(0, 0);
-		System.out.println(HardwareInfo.java_version);
+		System.out.println(ComputerInfo.java_version);
+		objects.add(new testObject());
 	}
 
 	public void onClose() {
@@ -101,17 +102,7 @@ public class Test extends SJGL {
 	public void mouseClicked(MouseEvent e) {
 		
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		
-	}
-
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
@@ -119,6 +110,19 @@ public class Test extends SJGL {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		
+	}
+	
+	class testObject implements GameObject{
+
+		@Override
+		public void onRender(Graphics g) {
+			g.fillRect(100, 100, 100, 100, Color.WHITE);
+		}
+
+		@Override
+		public void onUpdate() {
+		}
 		
 	}
 }

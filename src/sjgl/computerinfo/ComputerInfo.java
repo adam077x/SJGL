@@ -1,4 +1,4 @@
-package sjgl.hardwareinfo;
+package sjgl.computerinfo;
 
 public class ComputerInfo {
 	public static final int cpuCores = Runtime.getRuntime().availableProcessors();
