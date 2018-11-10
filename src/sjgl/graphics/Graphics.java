@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Image;
 
 import sjgl.SJGL;
+import sjgl.window.Window;
 
 public class Graphics {
 	public static int graphicsLib; // 0 - Java Swing 

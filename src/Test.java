@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import javax.swing.JFrame;
+
 import sjgl.SJGL;
 import sjgl.audio.PlayWavSound;
 import sjgl.computerinfo.ComputerInfo;
@@ -12,6 +14,7 @@ import sjgl.graphics.Graphics;
 import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
 import sjgl.object.GameObject;
+import sjgl.window.Window;
 
 /*
  * This class is for testing SJGL.
@@ -26,7 +29,7 @@ public class Test extends SJGL {
 	private int x, y, velX, velY;
 
 	public Test() {
-		createDisplay(700, 700, "test");
+		createDisplay(700, 700, false,"test");
 	}
 
 	public void onStart() {
@@ -53,7 +56,7 @@ public class Test extends SJGL {
 	public void onRender() {
 		Graphics g = new Graphics();
 		
-		g.fillRect(0, 0, 800, 800, Color.CYAN);
+		g.fillRect(0, 0, Window.f.getWidth(), Window.f.getHeight(), Color.CYAN);
 
 		//Graphics2D g2d = (Graphics2D) g;
 		//g2d.drawImage(sprite1, 0, 0, null);
