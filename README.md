@@ -43,3 +43,4 @@ public class Main extends SJGL {
 	}
 }
 ```
+[Download SJGL 1.3 Beta](http://github.com/adam077x/SJGL/releases/download/1.3b/sjgl1.3b.jar)
