@@ -6,6 +6,7 @@ import java.io.File;
 
 import sjgl.SJGL;
 import sjgl.audio.PlayWavSound;
+import sjgl.gameloop.GameLoop;
 import sjgl.graphics.Graphics;
 import sjgl.hardwareinfo.HardwareInfo;
 import sjgl.image.ImageLoader;

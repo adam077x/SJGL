@@ -3,6 +3,9 @@ package sjgl.gameloop;
 import sjgl.SJGL;
 
 public class GameLoop {
+	private static int updates;
+	private static int frames;
+	
 	public GameLoop(SJGL sjgl) {
 		//this.requestFocus();
 		long lastTime = System.nanoTime();
@@ -33,16 +36,26 @@ public class GameLoop {
 			}
 			while(deltaRender >= 1){
 				sjgl.getSjgl().render();
+				frames++;
 				deltaRender--;
 			}
-			frames++;
-					
+			
 			if(System.currentTimeMillis() - timer > 1000){
+				this.updates = updates;
+				this.frames = frames;
 				timer += 1000;
 				frames = 0;
 				updates = 0;
 			}
 		}
 		sjgl.getSjgl().stop();
+	}
+
+	public static int getUpdates() {
+		return updates;
+	}
+
+	public static int getFPS() {
+		return frames;
 	}
 }
