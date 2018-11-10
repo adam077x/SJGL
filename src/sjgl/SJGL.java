@@ -33,7 +33,8 @@ public abstract class SJGL extends Canvas implements Runnable {
 	
 	public void createDisplay(int width, int height, String title, boolean resizable, int closeOp, boolean visible) {
 		new Window(width, height, title, resizable, closeOp, visible, this);
-
+		
+		render = 1000;
 		ticks = 60;
 		start();
 	}
