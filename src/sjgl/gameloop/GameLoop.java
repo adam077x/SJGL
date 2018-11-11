@@ -3,6 +3,7 @@ package sjgl.gameloop;
 import java.awt.Toolkit;
 
 import sjgl.SJGL;
+import sjgl.display.Display;
 
 public class GameLoop {
 	private static int updates;
@@ -12,8 +13,8 @@ public class GameLoop {
 	public GameLoop(SJGL sjgl) {
 		//this.requestFocus();
 		long lastTime = System.nanoTime();
-		double amountOfTicks = sjgl.getSjgl().getTicks();
-		double amountOfRender = sjgl.getSjgl().getRender();
+		double amountOfTicks = Display.ticks;
+		double amountOfRender = Display.render;
 		double ns = 1000000000 / amountOfTicks;
 		double render = 1000000000 / amountOfRender;
 		double delta = 0;

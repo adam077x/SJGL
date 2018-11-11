@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import sjgl.SJGL;
 import sjgl.audio.PlayWavSound;
 import sjgl.computerinfo.ComputerInfo;
+import sjgl.display.Display;
 import sjgl.gameloop.GameLoop;
 import sjgl.graphics.Graphics;
 import sjgl.image.ImageLoader;
@@ -38,7 +39,8 @@ public class Test extends SJGL {
 	public static ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	public Test() {
-		createDisplay(700, 700, false,"test");
+		Display display = new Display(this);
+		display.createDisplay(700, 700, false,"test");
 	}
 
 	public void onStart() {

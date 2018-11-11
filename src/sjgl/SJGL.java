@@ -18,35 +18,16 @@ import sjgl.window.Window;
 
 public abstract class SJGL extends Canvas implements Runnable {
 	private static final long serialVersionUID = -1606451883329577588L;
-
-	private int ticks; // A value that restrains ticks per seconds
-	private int render;
 	
 	private Thread thread;
 	private boolean running = false;
 	
-	private SJGL sjgl = this;
-	
 	public static Graphics2D g2d;
 	public static Graphics g;
 	
-	public void createDisplay(int width, int height, boolean fullscreen,String title) {
-		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, fullscreen, this);
-		
-		render = 1000;
-		ticks = 60;
-		start();
-	}
+	private SJGL sjgl = this;
 	
-	public void createDisplay(int width, int height, String title, boolean resizable, int closeOp, boolean fullscreen, boolean visible) {
-		new Window(width, height, title, resizable, closeOp, visible, fullscreen, this);
-		
-		render = 1000;
-		ticks = 60;
-		start();
-	}
-
-	private synchronized void start() {
+	public synchronized void start() {
 
 		/*
 		 * This code will be executed when program starts.
@@ -139,19 +120,7 @@ public abstract class SJGL extends Canvas implements Runnable {
 		return sjgl;
 	}
 	
-	public int getRender() {
-		return render;
-	}
-
-	public int getTicks() {
-		return ticks;
-	}
-
-	public void setTicks(int ticks) {
-		this.ticks = ticks;
-	}
-	
 	public float getVersion() {
-		return 1.3f;
+		return 1.4f;
 	}
 }
