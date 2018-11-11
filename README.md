@@ -7,12 +7,14 @@ SJGL is a library that makes game development in Java easier.
 import java.awt.Color;
 
 import sjgl.SJGL;
+import sjgl.display.Display;
 import sjgl.graphics.Graphics;
 
 public class Main extends SJGL {
 
 	public Main() {
-		createDisplay(800, 600, "Example for SJGL");
+		Display display = new Display(this);
+		display.createDisplay(800, 600, false, "Example for SJGL");
 	}
 	
 	public static void main(String[] args) {
@@ -43,4 +45,5 @@ public class Main extends SJGL {
 	}
 }
 ```
-[Download SJGL 1.3 Beta](http://github.com/adam077x/SJGL/releases/download/1.3b/sjgl1.3b.jar)
+[Download SJGL 1.4](http://github.com/adam077x/SJGL/releases/download/1.4/sjgl1.4.jar)
+[Download JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
