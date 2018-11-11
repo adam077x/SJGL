@@ -34,7 +34,7 @@ public class Main extends SJGL {
 	@Override
 	public void onRender() {
 		Graphics g = new Graphics(); // NOTE: Be sure that you import the sjgl.graphics.Graphics class instead of java.awt.Graphics
-		g.fillRect(0, 0, 800, 600, Color.BLACK);
+		g.clearScreen(Color.BLACK);
 		
 		g.fillOval(10, 10, 150, 120, Color.CYAN);
 	}
