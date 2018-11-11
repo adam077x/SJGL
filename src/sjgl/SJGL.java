@@ -2,13 +2,14 @@ package sjgl;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-
 import sjgl.gameloop.GameLoop;
 import sjgl.input.Keyboard;
 import sjgl.input.Mouse;
@@ -20,11 +21,14 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	private int ticks; // A value that restrains ticks per seconds
 	private int render;
+	
 	private Thread thread;
 	private boolean running = false;
+	
 	private SJGL sjgl = this;
+	
+	public static Graphics2D g2d;
 	public static Graphics g;
-	public static ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	
 	public void createDisplay(int width, int height, boolean fullscreen,String title) {
 		new Window(width, height, title, false, JFrame.EXIT_ON_CLOSE, true, fullscreen, this);
@@ -102,12 +106,10 @@ public abstract class SJGL extends Canvas implements Runnable {
 		}
 
 		g = bs.getDrawGraphics();
+		g2d = (Graphics2D) g;
 		sjgl.graphics.Graphics g2 = new sjgl.graphics.Graphics();
+		
 		onRender();
-
-		for(int i = 0; i < objects.size(); i++) {
-			 objects.get(i).onRender(g2);
-		}
 		
 		bs.show();
 		g.dispose();
@@ -115,10 +117,6 @@ public abstract class SJGL extends Canvas implements Runnable {
 	
 	public void tick() {
 		onUpdate();
-		
-		for(int i = 0; i < objects.size(); i++) {
-			 objects.get(i).onUpdate();
-		}
 	}
 
 	/*
