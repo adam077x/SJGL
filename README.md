@@ -45,6 +45,6 @@ public class Main extends SJGL {
 	}
 }
 ```
-[Download SJGL 1.4](http://github.com/adam077x/SJGL/releases/download/1.4/sjgl1.4.jar)
+[Download SJGL 1.4.1](http://github.com/adam077x/SJGL/releases/download/1.4.1/sjgl1.4.1.jar)
 
 [Download JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
