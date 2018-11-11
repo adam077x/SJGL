@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -16,6 +17,7 @@ import sjgl.image.ImageLoader;
 import sjgl.image.SpriteSheet;
 import sjgl.object.GameObject;
 import sjgl.object.entity.Entity;
+import sjgl.text.Text;
 import sjgl.vectors.Vector2;
 import sjgl.window.Window;
 
@@ -65,12 +67,15 @@ public class Test extends SJGL {
 	}
 
 	public void onRender() {
+		Text text = new Text(new Vector2(10, 10), "test", new Font("Arial", 20, 20));
 		Graphics g = new Graphics();
 		g.fillRect(0, 0, Window.f.getWidth(), Window.f.getHeight(), Color.CYAN);
 		
 		for(int i = 0; i < entities.size(); i++) {
 			 entities.get(i).onRender(g);
 		}
+		
+		text.onRender(g);
 		
 		g.fillRect(x, y, 50, 50, Color.RED);
 	}
