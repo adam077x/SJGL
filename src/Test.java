@@ -69,7 +69,7 @@ public class Test extends SJGL {
 	public void onRender() {
 		Text text = new Text(new Vector2(10, 10), "test", new Font("Arial", 20, 20));
 		Graphics g = new Graphics();
-		g.fillRect(0, 0, Window.f.getWidth(), Window.f.getHeight(), Color.CYAN);
+		g.clearScreen(Color.CYAN);
 		
 		for(int i = 0; i < entities.size(); i++) {
 			 entities.get(i).onRender(g);

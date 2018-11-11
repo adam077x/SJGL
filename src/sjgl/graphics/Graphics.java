@@ -17,6 +17,13 @@ public class Graphics {
 		}
 	}
 	
+	public void clearScreen(Color color) {
+		if(graphicsLib == 0) {
+			SJGL.g.setColor(color);
+			SJGL.g.fillRect(0, 0, Window.f.getWidth(), Window.f.getHeight());
+		}
+	}
+	
 	public void drawRect(int x, int y, int width, int height, Color color) {
 		if(graphicsLib == 0) {
 			SJGL.g.setColor(color);
