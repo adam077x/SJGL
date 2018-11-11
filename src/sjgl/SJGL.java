@@ -5,16 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
-import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import sjgl.gameloop.GameLoop;
 import sjgl.input.Keyboard;
 import sjgl.input.Mouse;
-import sjgl.object.GameObject;
-import sjgl.window.Window;
 
 public abstract class SJGL extends Canvas implements Runnable {
 	private static final long serialVersionUID = -1606451883329577588L;
@@ -58,25 +53,17 @@ public abstract class SJGL extends Canvas implements Runnable {
 	 */
 
 	public abstract void onStart(); // This function will be executed every time the program is opened
-
 	public abstract void onClose(); // This function will be executed when the program/application is closed
-
 	public abstract void onUpdate(); // This function is executed 60 times a second
-
 	public abstract void onRender(); // This function is executed as many times as possible. (Depends on the power of your computer)
 	
 	public void onKeyPress(KeyEvent e) {}
-	
 	public void onKeyRelease(KeyEvent e) {}
 	
 	public void mouseClicked(MouseEvent e) {}
-
 	public void mouseEntered(MouseEvent e) {}
-
 	public void mouseExited(MouseEvent e) {}
-
 	public void mousePressed(MouseEvent e) {}
-
 	public void mouseReleased(MouseEvent e) {}
 
 	public void render() {
@@ -88,7 +75,6 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 		g = bs.getDrawGraphics();
 		g2d = (Graphics2D) g;
-		sjgl.graphics.Graphics g2 = new sjgl.graphics.Graphics();
 		
 		onRender();
 		
@@ -114,10 +100,6 @@ public abstract class SJGL extends Canvas implements Runnable {
 
 	public void setRunning(boolean running) {
 		this.running = running;
-	}
-
-	public SJGL getSjgl() {
-		return sjgl;
 	}
 	
 	public float getVersion() {

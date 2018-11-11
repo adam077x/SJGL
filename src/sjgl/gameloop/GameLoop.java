@@ -22,24 +22,24 @@ public class GameLoop {
 		long timer = System.currentTimeMillis();
 		int updates = 0;
 		int frames = 0;
-		sjgl.getSjgl().setRunning(true);
+		sjgl.setRunning(true);
 		
 		/*
 		 * Game loop (will cap ticks per second, while you can have unlimited frames per second)
 		 * */
 		
-		while(sjgl.getSjgl().isRunning()){
+		while(sjgl.isRunning()){
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			deltaRender += (now - lastTime) / render;
 			lastTime = now;
 			while(delta >= 1){
-				sjgl.getSjgl().tick();
+				sjgl.tick();
 				updates++;
 				delta--;
 			}
 			while(deltaRender >= 1){
-				sjgl.getSjgl().render();
+				sjgl.render();
 				frames++;
 				deltaRender--;
 			}
@@ -56,7 +56,7 @@ public class GameLoop {
 				Toolkit.getDefaultToolkit().sync(); // Synchronize graphical state
 			}
 		}
-		sjgl.getSjgl().stop();
+		sjgl.stop();
 	}
 
 	public static int getUpdates() {
