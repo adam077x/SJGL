@@ -152,7 +152,7 @@ public class Test extends SJGL {
 	class testEntity extends Entity {
 
 		public testEntity() {
-			super(new Vector2(10, 10), new Vector2(50, 50));
+			super(new Vector2(10, 10), new Vector2(50, 50), "test");
 			velocity.x = 5;
 			velocity.y = 5;
 		}
